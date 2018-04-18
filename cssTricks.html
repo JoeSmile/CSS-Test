@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Css tricks</title>
+  <style>
+    body, html {
+        height: 100%;
+    }
+    .height50 {
+        height: 50px;
+    }
+    /* 1.鼠标禁用点击事件 */
+    .disabled-mouse-click { pointer-events: none; }
+
+    /* 模糊文字效果 */
+    .blur-text {
+        color: transparent;
+        text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    .blur-text-filter {
+        text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        filter: blur(1px);    
+        color: red;    
+    }
+
+    /* 3.关于filter */
+     .filter-content img{
+        width: 200px;
+        height: 180px;
+     }
+      
+  </style>
+</head>
+<body>
+        <h3>1.鼠标禁用点击事件</h3>
+        <button class='disabled-mouse-click'>鼠标禁用点击事件</button>
+        <button>鼠标未禁用点击事件</button>
+        <div class='height50'>
+        <a class='disabled-mouse-click' href="http://www.baidu.com">不可点击http://www.baidu.com</a>
+        <br />
+        <a href="http://www.baidu.com">可以点击 http://www.baidu.com</a>
+        <hr />
+
+        <h3>2.模糊文字</h3>
+        <div class='blur-text'>模糊文章效果</div>
+        <div class='blur-text-filter'>模糊文章效果 fileter</div>
+        <hr />
+        
+        <h3>3.关于filter</h3>
+        <div class='filter-content'>
+            <label></label>
+            <img  src="./images/girl.png"/>
+        </div>
+    </div>
+</body>
+</html>

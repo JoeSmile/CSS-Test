@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>triangle</title>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .unicode-triangle:after{
+        display: block;
+        content: "\25B2";
+        color: #a70ef2;
+        font-size: 120px;
+    }
+
+    .border-triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid royalblue;
+    }
+  </style>
+</head>
+<body>
+    <label>1. Unicode </label>
+    <div class='unicode-triangle'></div>
+    <hr />
+    <label>2. Border </label>
+    <div class='border-triangle'></div>
+</body>
+</html>
