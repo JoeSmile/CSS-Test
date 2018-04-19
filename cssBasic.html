@@ -13,24 +13,115 @@
       margin: 0;
       padding: 30px;
     }
+    .square {
+      display: inline-block;
+      height: 200px;
+      width: 200px;
+      vertical-align: bottom;
+      text-align: center;
+    }
+    .border1 {
+      border: 1px salmon solid;
+    }
+    .rect {
+      height: 50px;
+      width: 200px;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
   <div class='main'>
     <div>
-      <p>css语法</p>
+      <p>1：css语法</p>
       <img src="./images/css syntax.png" alt="">
     </div>
-    <div style="background:aqua">
+    <hr>
+    <div style="font-weight: bold">
+      2：引入方式
       1:写在 style 标签中 External Style Sheel
       2:写在 link 标签里 Internal Style Sheet
       3:内联样式 写在标签的 style 属性中 Inline Style Sheet
     </div>
     <hr>
     <div>
-      教程
-      https://www.w3schools.com/css/css_colors.asp
+      <p>3： 盒子模型</p>
+      <img src="./images/box-model.gif" alt="box-model" style="display: block;">
+      <div class="square" style="box-sizing: border-box;border: 10px solid royalblue;margin: 5px;padding:5px;">
+        box-sizing: border-box;
+        margin: 5px;
+        padding:5px;
+        height: 200px;
+        怪异模式,包含margin，padding, border
+      </div>
+      <div class="square" style="box-sizing: content-box;border: 10px solid royalblue;margin: 10px;padding:10px;">
+        box-sizing: content-box;
+        margin: 5px; 
+        padding:5px;
+        height: 200px;
+        标准模式,只包含content
+      </div>
     </div>
+    <hr>
+    <div>
+      <div style="margin-bottom: 5px;">
+        4：color
+        格式：Colors are specified using predefined color names, or RGB, HEX, HSL, RGBA, HSLA values.
+      </div>
+      <div class='square' style="background-color: tomato;background:orange; font-size: 13px;line-height: 200px;">background color 后者覆盖前者</div>
+      <div style="color:skyblue" class="square">font color</div>
+      <div style="background-color: rgb(255, 99, 71)" class='square'>rgb(255, 99, 71)</div>
+      <div style="background-color: #ff6347" class='square'>#ff6347</div>
+    </div>
+    <hr>
+    <div>
+      <div>
+        5.border
+      </div>
+      <div style="margin-bottom: 30px;">
+        <div class='square' style="border: 5px solid tomato"></div>
+        <div class='square' style="border: 5px dashed salmon"></div>
+        <div class='square' style="border: 5px double skyblue"></div>
+        <div class='square' style="border-left: 5px dotted rebeccapurple"></div>
+      </div>
+      <div class='square' style="border: 40px groove darkblue"></div>
+      <div class='square' style="border: 40px ridge darkmagenta"></div>
+      <div class='square' style="border: 40px inset khaki"></div>
+      <div class='square' style="border: 40px outset #8ac114"></div>
+    </div>
+    <hr>
+    <div>
+      <p>6. padding & margin (参见上图)</p> 
+    </div>
+    <hr>
+    <div>
+      <p>7.height & width / min-  & max-</p>
+      max-width; min-width; 一般是在width/height设置了百分百后配合使用
+    </div>
+    <hr>
+    <div>
+      <p style="margin-bottom: 30px;">8.outline</p>
+      <div class='square' style="outline: 5px solid royalblue;margin-right: 50px;">outline 不属于盒子模型</div>
+      <div class='square' style="border: 5px solid sandybrown;line-height: 200px;outline: 5px dashed teal;outline-offset: -30px;">outline-offset妙用</div>
+      <p style="margin: 10px 0;height: 30px;"> PS: 若outline在page外，不会出现滚动条，而是显示不出来,修改outline宽度即可测出。</p>
+    </div>
+    <hr>
+    <div>
+      <p>9.text</p>
+      <div class='rect border1' style="text-align: left;">text-align: left</div>
+      <div class='rect border1' style="text-align: right;">text-align: right</div>
+      <div class='rect border1' style="text-align: center;">text-align: center</div>
+      <div class='rect border1' style="text-align: justify;vertical-align: bottom;">text-align: justifytext-align: justify; abcdefghijk lmnoxyz</div>
+      <div class='rect border1' style="text-transform: uppercase;">Big big WoRlD</div>
+      <div class='rect border1' style="text-transform: lowercase;">text-align: center</div>
+      <div class='rect border1' style="text-transform: capitalize;">text-align: center</div>
+      <div class='rect border1' style="text-transform: capitalize; text-shadow: 3px 2px 3px salmon; color: green;">Text-Shadow</div>
+      <p>其它属性 letter-spacing,word-spacing,direction</p> 
+      <div class='border1' style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 200px;">文字溢出,未显示的部分用...代替</div>
+    </div>
+  </div>
+  <div style="text-align: center; color: rebeccapurple;line-height: 100px;height: 100px;font-family: -webkit-pictograph;font-size: 20px;">
+    IT职业地图
   </div>
 </body>
 </html>
