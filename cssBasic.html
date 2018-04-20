@@ -4,6 +4,7 @@
   <title>CSS Basic</title>
   <link rel='stylesheet' href='./reset.css' type='text/css' />
   <link rel='stylesheet' href='https://meyerweb.com/eric/tools/css/reset/reset200802.css' type='text/css'/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     html {
       height: 100%;
@@ -27,7 +28,24 @@
       height: 50px;
       width: 200px;
       display: inline-block;
+      vertical-align: bottom;
     }
+    .link a:first-child:hover {
+      color: #8ac114
+    }
+    .link a:first-child:visited {
+      color: red;
+    }
+    table.table-test th,
+    table.table-test td{
+      border: 5px solid darkgoldenrod;
+    }
+    tr:nth-child(even){background-color: #f2f2f2}
+    tr:nth-child(odd){background-color: #ff6347}
+    table {
+      width: 1000px;
+    }
+    
   </style>
 </head>
 <body>
@@ -112,16 +130,119 @@
       <div class='rect border1' style="text-align: right;">text-align: right</div>
       <div class='rect border1' style="text-align: center;">text-align: center</div>
       <div class='rect border1' style="text-align: justify;vertical-align: bottom;">text-align: justifytext-align: justify; abcdefghijk lmnoxyz</div>
-      <div class='rect border1' style="text-transform: uppercase;">Big big WoRlD</div>
-      <div class='rect border1' style="text-transform: lowercase;">text-align: center</div>
-      <div class='rect border1' style="text-transform: capitalize;">text-align: center</div>
+      <div class='rect border1' style="text-transform: uppercase;">Big big WoRlD text-transform: uppercase</div>
+      <div class='rect border1' style="text-transform: lowercase;">text-align: center；text-transform: lowercase;</div>
+      <div class='rect border1' style="text-transform: capitalize;">text-align: center；text-transform: capitalize</div>
       <div class='rect border1' style="text-transform: capitalize; text-shadow: 3px 2px 3px salmon; color: green;">Text-Shadow</div>
       <p>其它属性 letter-spacing,word-spacing,direction</p> 
       <div class='border1' style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 200px;">文字溢出,未显示的部分用...代替</div>
     </div>
+
+    <hr>
+    <div>
+      <p>10.font 单位</p>
+      <p style='font-size: 1em'>em	它是描述相对于应用在当前元素的字体尺寸，所以它也是相对长度单位。一般浏览器字体大小默认为16px，则2em == 32px；</p>
+      <p style='font-size: 1rem'>rem	根元素（html）的 font-size</p>
+      <p style='font-size: 1vw'>vw	viewpoint width，视窗宽度，1vw=视窗宽度的1%</p>
+      <p style='font-size: 1vh'>vh	viewpoint height，视窗高度，1vh=视窗高度的1%</p>
+    </div>
+    <hr>
+    <div>
+      <p>11. icons</p>
+      <i class="fa fa-cloud"></i>
+      <i class="fa fa-heart"></i>
+      <i class="fa fa-car"></i>
+      <i class="fa fa-file"></i>
+      <i class="fa fa-bars"></i>
+    </div>
+    <hr>
+    <div>
+      <p>12.link</p>
+      a:link - a normal, unvisited link
+      a:visited - a link the user has visited
+      a:hover - a link when the user mouses over it
+      a:active - a link the moment it is clicked
+      <div class='link'>
+        <a href="http://www.baidu.com">www.baidu.com</a>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <p>13.list</p>
+      <ul style='list-style: none;'>
+        <li>unordered lists</li>
+      </ul>
+      <ul class='border1' style='list-style: circle;list-style-position:outside;'>
+        <li>list-style-position:outside</li>
+      </ul>
+      <ul class='border1' style='list-style: square;list-style-position:inside;'>
+        <li>list-style-position:inside</li>
+      </ul>
+      <ul style="list-style-image: url('./images/listStyle.png');list-style-position:inside;">
+        <li>list-style-image</li>
+      </ul>
+      <ol style='list-style:upper-roman;'>
+        <li>ordered lists</li>
+        <li>ordered lists</li>
+        <li>ordered lists</li>
+        <li>ordered lists</li>
+      </ol>
+    </div>
+    <hr>
+    <div style="overflow-x:auto;">
+      <p>14.table</p>
+      <table class='table-test'>
+        <thead>
+          <tr>
+              <th>第一列</th>
+              <th>第二列</th>
+              <th>第三列</th>
+              <th>第三列</th>
+              <th>第三列</th>
+              <th>第三列</th>
+              <th>第三列</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>border-collapse：separate	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>border-collapse：collapse	如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>overflow-x:auto;</td>
+            </tr>
+            <tr>
+              <td>border-collapse：separate	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>border-collapse：collapse	如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>overflow-x:auto;</td>
+            </tr>
+            <tr>
+              <td>border-collapse：separate	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>border-collapse：collapse	如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>overflow-x:auto;</td>
+            </tr>
+            <tr>
+              <td>border-collapse：separate	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>border-collapse：collapse	如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。</td>
+              <td>overflow-x:auto;</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <div>
+      <p>15.display</p>
+      <div>
+        <p>block level elements</p>
+        <section>div, h1~h6, p, form, header, footer, section</section>
+        <p>inline elements</p>
+        <section>span, a, img</section>
+        <p>display:none / display: inline-block / display: flex;</p>
+
+      </div>
+    </div>
   </div>
   <div style="text-align: center; color: rebeccapurple;line-height: 100px;height: 100px;font-family: -webkit-pictograph;font-size: 20px;">
     IT职业地图
+    https://www.w3schools.com/css/css_display_visibility.asp
   </div>
 </body>
 </html>
