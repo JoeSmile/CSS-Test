@@ -3,8 +3,8 @@
 <head>
   <title>CSS Basic</title>
   <link rel='stylesheet' href='./reset.css' type='text/css' />
-  <link rel='stylesheet' href='https://meyerweb.com/eric/tools/css/reset/reset200802.css' type='text/css'/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel='stylesheet' href='https://meyerweb.com/eric/tools/css/reset/reset200802.css' type='text/css'/> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <style>
     html {
       height: 100%;
@@ -45,7 +45,28 @@
     table {
       width: 1000px;
     }
-    
+    .float-test::after {
+      content: '';
+      clear: both;
+    }
+    /* 闭合浮动 */
+    .clearfix:before,
+    .clearfix:after {
+      content: "";
+      display: table;
+    }
+
+    .clear-father:after {
+      content: "";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .pseudo p::first-letter{
+      font-size: 20px;
+      color: blue;
+    }
   </style>
 </head>
 <body>
@@ -236,7 +257,124 @@
         <p>inline elements</p>
         <section>span, a, img</section>
         <p>display:none / display: inline-block / display: flex;</p>
-
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>16.position</p>
+    <section>
+      position: static / relative / fixed / absolute / sticky(只有谷歌支持)
+    </section>
+    <section>
+      <p>static: 默认值，不受top, bottom, right, left 影响</p>
+      <p>relative: 相对定位，相对与normal（正常的位置）</p>
+      <p>absolute: 绝对定位，相对于最近的relative／absolute祖先标签</p>
+      <p>fixed: 固定定位，相对于viewport的左上角的定位</p>
+      <p>sticky: is positioned based on the user's scroll position.</p>
+    </section>
+    <div>
+        <div class='border1 square'>
+          static
+        </div>
+        <div class='border1  square'>
+          <div class='border1 square' style="position: relative; top: 10px; left: 10px;">
+            relative
+          </div>
+        </div>
+        <div class='border1  square' style="position: relative;">
+          <div class='border1  square' style="position: absolute; top: 10px; left: 10px;border-color:yellow;">
+            absolute
+          </div>
+        </div>
+        <!-- <div class='border1  square' style="position: fixed; top:0">fixed</div> -->
+    </div>
+    <hr>
+    <div>
+      <p>17. overflow</p>
+      <div class="border1 square" style="overflow: hidden;">
+        <span>测试overflow属性不同值,visible, hidden, scroll, auto，逐一试验。还有overflow-x / overflow-y.
+            红豆生南国，春来发几枝。
+            愿君多采撷，此物最相思。
+            城阙辅三秦，风烟望五津。
+            与君离别意，同是宦游人。
+            海内存知己，天涯若比邻。
+            无为在歧路，儿女共沾巾。
+            闲坐悲君亦自悲，百年都是几多时。
+            邓攸无子寻知命，潘岳悼亡犹费词。
+            同穴窅冥何所望，他生缘会更难期。
+            惟将终夜常开眼，报答平生未展眉。
+        </span>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <p>18. float</p>
+      <div>float: right / left; clear: both; 浮动元素会生成一个块级框，而不论它本身是何种元素。</div>
+      <div class='border1 clear-father'>
+        <div>
+          left-words
+        </div>
+        <div class='float-test square', style="background: tomato; float: left;" >
+          float
+        </div>
+        <div>
+          right-words
+        </div>
+      </div>
+    </div>
+    <div style="border: 1px dashed black; clear: both;">
+    <div>
+      <p>深入理解：</p>
+      <section>
+      <p style='color: royalblue;'>文档流</p>
+        <ul style="list-style: circle; list-style-position: inside;">
+          <li>普通流，包括对块级框的块格式，对行级框的行格式，对块级框和行级框的相对定位。</li>
+          <li>浮动，在浮动模型中，一个框先按照正常排版来摆放，再将它从排版流中取出并尽可能地向左或向右偏移。其它内容可以排在一个浮动的周围。</li>
+          <li>绝对定位，在绝对定位模型中，一个框会从排版流中完全脱离出来（它对后续的兄弟没有影响），并相对其包含块来指定其位置。（包括 absolute, fixed ）</li>
+          <li>所以浮动也会脱离普通流，但属于一种比较‘特殊’的脱离，其他内容还会围绕在浮动元素周围，这时候父元素无法感知到它的存在。</li>
+        </ul>
+      </section>
+      <section>
+        <p style='color: royalblue;'>BFC: 块格式化上下文,用于决定块盒子的布局及浮动相互影响范围的一个区域.决定自身BFC布局的一个看不见的属性（不影响子元素中新的bfc。</p>
+        <ul style="list-style: circle; list-style-position: inside;">
+          <li>创建：</li>
+          <li>浮动 (元素的 float 不为 none)</li>
+          <li>绝对定位元素 (元素的 position 为 absolute 或 fixed)</li>
+          <li>行内块 inline-blocks (元素的 display: inline-block)</li>
+          <li>表格单元格 (元素的 display: table-cell，HTML表格单元格默认属性)</li>
+          <li>表格标题 (元素的 display: table-caption, HTML表格标题默认属性)</li>
+          <li>overflow 的值不为 visible的元素</li>
+          <li>弹性盒 flex boxes (元素的 display: flex 或 inline-flex)</li>
+        </ul>
+      </section>
+      <section>
+        <p style="color:tomato;">clear CSS 属性指定一个元素是否可以在它之前的浮动元素旁边，或者必须向下移动(清除浮动) 在它的下面。clear 属性适用于浮动和非浮动元素。</p>
+      </section>
+      </div>
+    </div>
+    <hr>
+    <div class='pseudo'>
+      <p>伪元素 ／ 伪类</p>
+      <p>
+          A CSS pseudo-element is used to style specified parts of an element.
+          For example, it can be used to:
+          Style the first letter, or line, of an element
+          Insert content before, or after, the content of an element
+      </p>
+      <p>
+          A pseudo-class is used to define a special state of an element.
+          For example, it can be used to:
+          Style an element when a user mouses over it
+          Style visited and unvisited links differently
+          Style an element when it gets focus (:hover)
+      </p>
+    </div>
+    <hr>
+    <div>
+      <p>20.flex display: flex</p>
+      <div class="warpper" style="display: flex;">
+        <div class='border1' style="height: 100px; width: 100px"> height: 100px;</div>
+        <div class='border1' style="flex: 1;">flex:1</div>
       </div>
     </div>
   </div>
