@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>京东</title>
+  <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .height50 {
+        height: 50px;
+    }
+    .main-warpper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        height: 80px;
+        background: aqua;
+    }
+    .content {
+        flex: 1;
+        background: bisque;
+        display: flex;
+    }
+    .flex1 {
+        flex: 1;
+    }
+    .flex2 {
+        flex: 2;
+    }
+    .flex3 {
+        flex: 3;
+    }
+    .footer {
+        height: 80px;
+        background: blueviolet;
+    }
+    .bg-red {
+        background: red;
+    }
+    .bg-blue {
+        background: blue;
+    }
+    
+    .menu ul li{
+        display: inline-block;
+        border: 1px solid white;
+    }
+    
+  </style>
+</head>
+<body>
+    <div class='main-warpper'>
+        <div class='header'>header</div>
+        <div class='content'>
+            <div class="flex1 bg-red">left</div>
+            <div class='flex3'>
+                <div class='menu'>
+                    <ul>
+                        <li>菜单一</li>
+                        <li>菜单二</li>
+                        <li>菜单三</li>
+                        <li>菜单四</li>
+                        <li>菜单五</li>
+                    </ul>
+                </div>
+            </div>
+            <div class='flex2 bg-blue'>right</div>
+        </div>
+        <div class='footer'>footer</div>
+    </div>
+</body>
+</html>
