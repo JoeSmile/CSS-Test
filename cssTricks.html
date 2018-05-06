@@ -6,6 +6,12 @@
     body, html {
         height: 100%;
     }
+    ul {
+        list-style: none;
+    }
+    ul li {
+        display: inline-block;
+    }
     .height50 {
         height: 50px;
     }
@@ -24,11 +30,43 @@
     }
 
     /* 3.关于filter */
-     .filter-content img{
+    .filter-content img{
         width: 200px;
         height: 180px;
-     }
-      
+    }
+    /* 用 :empty 选择空元素 */
+    ul.test-empty li:empty {
+        height: 20px;
+        width: 20px;
+        border: 1px solid red;
+    }
+    /* *-of-type */
+    /* 择器匹配属于其父元素的特定类型的首个子元素的每个元素 等同于 :nth-of-type(1) */
+    .all-of-type li:first-of-type {
+        color: red;
+    }
+    /* 选择器匹配属于其父元素的特定类型的唯一子元素的每个元素。 */
+    .all-of-type p:only-of-type {
+        color: palegreen;
+    }
+    /* odd 奇数， even 偶数， 2n+1 表达式 */
+    .may-choose:nth-of-type(odd) {
+        color: yellow;
+    }
+
+    /* inline-block 间隙 */
+    .inline-container div{
+        display: inline-block;
+    }
+    .diamond {
+        border: 1px solid;
+        height: 50px;
+        width: 50px;
+    }
+    .first-letter:first-letter {
+        font-size: 20px;
+        color: red;
+    }
   </style>
 </head>
 <body>
@@ -37,20 +75,69 @@
         <button>鼠标未禁用点击事件</button>
         <div class='height50'>
         <a class='disabled-mouse-click' href="http://www.baidu.com">不可点击http://www.baidu.com</a>
-        <br />
+        <br>
         <a href="http://www.baidu.com">可以点击 http://www.baidu.com</a>
-        <hr />
+        <hr>
 
         <h3>2.模糊文字</h3>
         <div class='blur-text'>模糊文章效果</div>
         <div class='blur-text-filter'>模糊文章效果 fileter</div>
-        <hr />
+        <hr>
         
         <h3>3.关于filter</h3>
         <div class='filter-content'>
             <label></label>
             <img  src="./images/girl.png"/>
         </div>
+        <hr>
+        <h3>4.空元素的处理</h3>
+        <ul class='test-empty'>
+            <li>joe</li>
+            <li>jane</li>
+            <li></li>
+        </ul>
+        <hr>
+        <h3>5. -of-type</h3>
+        <ul class='all-of-type'>
+            <li>111111</li>
+            <li class='may-choose'>22222</li>
+            <li class='may-choose'>33333</li>
+            <li class='may-choose'>44444</li>
+            <li class='may-choose'>55555</li>
+            <li class='may-choose'>66666</li>
+            <li>77777</li>
+            <li>88888</li>
+            <p>only-of-type</p>
+        </ul>
+        <hr>
+        <h3>6.inline-block</h3>
+        <div class="inline-container" style="font-size: 0">
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+        </div>
+        <div class="inline-container">
+            <div class='diamond'></div><!--
+         --><div class='diamond'></div><!--
+         --><div class='diamond'></div><!--
+         --><div class='diamond'></div>
+        </div>
+        <hr>
+        <h3>7.为更好的移动体验，为表单元素设置字体大小</h3>
+        <p>当触发 select 的下拉列表时，为了避免表单元素在移动浏览器（IOS Safari 等等）上的缩放，加上font-size：</p>
+        <code>
+            input[type="text"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px;
+            }
+        </code>
+        <hr>
+        <h3>8.首字效果</h3>
+        <p class='first-letter'>首字效果展示</p>
     </div>
 </body>
 </html>
