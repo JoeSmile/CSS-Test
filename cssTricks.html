@@ -50,10 +50,9 @@
         color: palegreen;
     }
     /* odd 奇数， even 偶数， 2n+1 表达式 */
-    .may-choose:nth-of-type(odd) {
+    .may-choose:nth-of-type(2n) {
         color: yellow;
     }
-
     /* inline-block 间隙 */
     .inline-container div{
         display: inline-block;
@@ -66,6 +65,29 @@
     .first-letter:first-letter {
         font-size: 20px;
         color: red;
+    }
+    .square {
+		height: 200px;
+		width: 200px;
+		border: 10px solid royalblue;
+		margin: 10px;
+		padding: 10px;
+}
+
+    /* 三角形 */
+    .unicode-triangle:after{
+        display: block;
+        content: "\25B2";
+        color: #a70ef2;
+        font-size: 120px;
+    }
+
+    .border-triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid royalblue;
     }
   </style>
 </head>
@@ -86,8 +108,8 @@
         
         <h3>3.关于filter</h3>
         <div class='filter-content'>
-            <label></label>
-            <img  src="./images/girl.png"/>
+            <img  src="./images/girl.png" />
+            <img  src="./images/girl.png" style="filter: grayscale(100%);"/>
         </div>
         <hr>
         <h3>4.空元素的处理</h3>
@@ -95,18 +117,18 @@
             <li>joe</li>
             <li>jane</li>
             <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
         <hr>
         <h3>5. -of-type</h3>
         <ul class='all-of-type'>
-            <li>111111</li>
             <li class='may-choose'>22222</li>
             <li class='may-choose'>33333</li>
             <li class='may-choose'>44444</li>
             <li class='may-choose'>55555</li>
             <li class='may-choose'>66666</li>
-            <li>77777</li>
-            <li>88888</li>
             <p>only-of-type</p>
         </ul>
         <hr>
@@ -138,6 +160,14 @@
         <hr>
         <h3>8.首字效果</h3>
         <p class='first-letter'>首字效果展示</p>
+        <hr>
+        <h3>9.三角形</h3>
+        <label>1. Unicode </label>
+        <div class='unicode-triangle'></div>
+        <hr />
+        <label>2. Border </label>
+        <div class='border-triangle'></div>
+        <img src="./images/unicode.png" alt="unicode">
     </div>
 </body>
 </html>

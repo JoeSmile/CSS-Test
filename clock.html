@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>clock</title>
+</head>
+<body>
+    <div class='clock'>
+        <div class='hand second-hand'></div>
+        <div class='hand min-hand'></div>
+        <div class='hand hour-hand'></div>
+    </div>
+    <div>
+        <p>主要知识点：</p>
+        <ol>
+            <li>transform-origin: 属性允许您改变被转换元素 <span style="color:red">轴</span> 的位置</li>
+            <li>transform: 对元素进行2d到3d的变换，以及可以使元素旋转，移动，缩放</li>
+            <ul>
+                <li>translate(x, y): 使元素移动 </li>
+                <li>rotate(angle): 单位deg， 使元素旋转 </li>
+                <li>scale(x, y): 使元素缩放</li>
+            </ul>
+            <li>
+                transition-timing-function: 过度动画效果
+            </li>
+            <li>
+                setInterval: 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+            </li>
+        </ol>
+    </div>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+        }
+
+        .clock {
+            border-radius: 50%; 
+            height: 400px;
+            position: relative;
+            width: 400px;
+            border: 5px solid tomato;
+        }
+
+        .hand {
+            background: black;
+            height: 5px;
+            position: absolute;
+            width: 200px;
+            top: 200px;
+            transform-origin: 100%;
+            transition-timing-function: ease-in-out;
+        }
+
+        .second-hand {
+            width: 180px;
+            left: 20px;
+        }
+        .min-hand {
+            width: 120px;
+            left: 80px;
+        }
+        .hour-hand {
+            width: 80px;
+            left: 120px;
+        }        
+        
+    </style>
+    <script>
+        const secondHand = document.querySelector('.second-hand')
+        const minHand = document.querySelector('.min-hand')
+        const hourHand = document.querySelector('.hour-hand')
+
+        function setTime() {
+            const now = new Date()
+            const secondDegrees = now.getSeconds() / 60 * 360 + 90
+            const minDegrees = now.getMinutes() / 60 * 360 + 90
+            const hourDegrees = now.getHours() / 12 * 360 + 90
+
+            secondHand.style.transform = `rotate(${secondDegrees}deg)`
+            minHand.style.transform = `rotate(${minDegrees}deg)`
+            hourHand.style.transform = `rotate(${hourDegrees}deg)`
+        }
+        setInterval(setTime, 1000)
+    </script>
+</body>
+</html>

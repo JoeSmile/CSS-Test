@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>flex detail</title>
+  <style>
+    body, html {
+        height: 100%;
+    }
+    .font-red {
+        color: red;
+    }
+    .demo-container {
+        display: inline-flex;
+        /* column column-reverse row row-reverse */
+        flex-direction: row; 
+        border: 1px solid deepskyblue;
+    }
+    .diamond-small {
+        height: 10px;
+        width: 10px;
+        background: aqua;
+        margin: 10px;
+        text-align: center;
+    }
+    .diamond-big {
+        height: 30px;
+        width: 30px;
+        background: aqua;
+        margin: 10px;
+        text-align: center;
+    }
+    .diamond {
+        height: 20px;
+        width: 20px;
+        background: aqua;
+        margin: 10px;
+        text-align: center;
+    }
+    .flex-wrap-container {
+        width: 400px;
+        flex-wrap: wrap-reverse
+    }
+    .justify-content-container {
+        width: 400px;
+        justify-content: space-around;
+    }
+    .align-items-container {
+        align-items: flex-start; 
+    }
+    .order2 {
+        order: 2;
+    }
+    .order1 {
+        order: 1;
+    }
+    .order3 {
+        order: 3;
+    }
+    .order-container div{
+        width: 100px;
+    }
+    .flex-grow-container {
+        width: 400px;
+    }
+    .flex-grow-2 {
+        flex-grow: 2;
+    }
+    .flex-grow-1 {
+        flex-grow: 1;
+    }
+    .flex-grow-5 {
+        flex-grow: 5;
+    }
+    .width {
+        width:  200px;  
+    }
+    .no-margin div{
+        margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+    <h1>常见布局</h1>
+    <img src="./images/common-layout.gif" alt="common-layout">
+    <h1>flex 弹性布局或弹性盒模型</h1>
+    <h2>display: flex / inline-flex</h2>
+    <em class="font-red">注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。</em>
+    <hr>
+    <h1>基础概念</h1>
+    <h3>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。</h3>
+    <img src="./images/flex-basic-info.png" alt="flex-basic-info">
+    <h3>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。</h3>
+    <h3>主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</h3>
+    <h3>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</h3>
+    <hr>
+    <h1>容器属性详解</h1>
+    <ol>
+        <li>flex-direction</li>
+        <li>flex-wrap</li>
+        <li>flex-flow</li>
+        <li>justify-content</li>
+        <li>align-items</li>
+        <li>align-content</li>
+    </ol>
+    <h3>1.flex-direction</h3>
+    <p>flex item 排列方向</p>
+    <code>
+        .box {
+            flex-direction: row | row-reverse | column | column-reverse
+        }
+    </code>
+    <div class='flex-direction-demo'>
+        <div class='demo-container'>
+            <div class='diamond'>1</div>
+            <div class='diamond'>2</div>
+            <div class='diamond'>3</div>
+            <div class='diamond'>4</div>
+        </div>
+    </div>
+    <h3>2.flex-wrap</h3>
+    <p>flex item 排列不下如何换行,容器要有固定宽度</p>
+    <code>
+        .box {
+            flex-wrap: nowrap | wrap | wrap-reverse
+        }
+    </code>
+    <div>
+        <div class='demo-container flex-wrap-container'>
+            <div class='diamond'>1</div>
+            <div class='diamond'>2</div>
+            <div class='diamond'>3</div>
+            <div class='diamond'>4</div>
+            <div class='diamond'>5</div>
+            <div class='diamond'>6</div>
+            <div class='diamond'>7</div>
+            <div class='diamond'>8</div>
+            <div class='diamond'>9</div>
+            <div class='diamond'>10</div>
+            <div class='diamond'>11</div>
+            <div class='diamond'>12</div>
+        </div>
+    </div>
+    <hr>
+    <h3>3.flex-flow</h3>
+    <p>flex-direction 和 flex-wrap的简写</p>
+    <code>
+        .box {
+            flex-flow: flex-direction || flex-wrap
+        }
+    </code>
+    <hr>
+    <h3>4.justify-content</h3>
+    <p>justify-content 属性定义了项目在主轴上的对齐方式</p>
+    <code>
+        .box {
+            justify-content: flex-start | flex-end | center | space-between | space-around;
+        }
+    </code>
+    <pre>
+        flex-start（默认值）：左对齐
+        flex-end：右对齐
+        center： 居中
+        space-between：两端对齐，项目之间的间隔都相等。
+        space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+    </pre>
+    <div>
+        <div class='demo-container justify-content-container'>
+            <div class='diamond'>1</div>
+            <div class='diamond'>2</div>
+            <div class='diamond'>3</div>
+        </div>
+    </div>
+    <hr>
+    <h3>5.align-items</h3>
+    <p>align-items 属性定义项目在交叉轴上如何对齐</p>
+    <code>
+        .box {
+            align-items: flex-start | flex-end | center | baseline | stretch;
+        }
+    </code>
+    <pre>
+        flex-start：交叉轴的起点对齐。
+        flex-end：交叉轴的终点对齐。
+        center：交叉轴的中点对齐。
+        baseline: 项目的第一行文字的基线对齐。
+        stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+    </pre>
+    <div>
+        <div class="demo-container align-items-container">
+            <div class='diamond'></div>
+            <div class='diamond-big'></div>
+            <div class='diamond-small'></div>
+        </div>
+    </div>
+    <hr>
+    <h1>item属性</h1>
+    <ul>
+        <li>order</li>
+        <li>flex-grow</li>
+        <li>flex-shrink</li>
+        <li>flex-basis</li>
+        <li>flex</li>
+        <li>align-self</li>
+    </ul>
+    <h3>1.order</h3>
+    <p>值越小，越靠前，可以取负值</p>
+    <div class='demo-container order-container'>
+        <div class="diamond order2">1:order2</div>
+        <div class="diamond order1">2:order1</div>
+        <div class="diamond order3">3:order3</div>
+    </div>
+    <h3>2.flex-grow</h3>
+    <p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+    <em>剩余空间： 容器空间 - 固定空间 - flex-basis</em>
+    <code>
+        .item {
+            flex-grow: number; /* default 0 */
+        }
+    </code>
+    <div>
+        <div class='demo-container flex-grow-container'>
+            <div class='diamond flex-grow-2'></div>
+            <div class='diamond flex-grow-5'></div>
+            <div class='diamond flex-grow-1'></div>
+        </div>
+    </div>
+    <hr>
+    <h3>3.flex-shrink</h3>
+    <p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+    <hr>
+    <h3>4.flex-basis</h3>
+    <p>一个长度单位或者一个百分比，规定灵活项目的初始长度</p>
+    <code>
+        .item {
+            flex-basis: length | auto; /* default auto */
+        }
+    </code>
+    <div>
+        <div class='demo-container no-margin' style="width: 100%;">
+            <div style="width: 100px;">固定空间</div>
+            <div class='diamond' style="background: aqua; flex-basis: 200px;" >flex-basis</div>
+            <div class='diamond' style='flex: 1;background: coral;'></div>
+            <div class='diamond' style="background: rebeccapurple; flex-grow: 2;"></div>
+            <div class='diamond' style="background: royalblue; flex-grow: 1;"></div>
+        </div>
+    </div>
+    <hr>
+    <h3>5.flex</h3>
+    <p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选</p>
+    <hr>
+    <h3>6. align-self</h3>
+    <p>align-self属性允许单个项目有与其他项目不一样的对齐方式</p>
+    <div>
+        <div class="demo-container align-items-container" style="height: 300px;">
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+            <div class='diamond' style="align-self: center;"></div>
+            <div class='diamond'></div>
+            <div class='diamond'></div>
+        </div>
+    </div>
+    <footer style='text-align: center;height: 80px; line-height: 80px;'>
+        it职业地图
+    </footer>
+</body>
+</html>
