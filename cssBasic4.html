@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Variables</title>
+</head>
+<body>
+  <div class='title'><p>CSS Variables</p></div>
+  <div class='controls'>
+    <label for="spacing">Spacing: </label>
+    <input type="range" name="spacing" min="10" max="100" value="10" data-sizing="px">
+    
+    <label for="blur">Blur: </label>
+    <input type="range" name="blur" min="0" max="100" value="10" data-sizing="px">
+    
+    <label for="color">Color: </label>
+    <input type="color" name="color" value="#ffCCDD">
+  </div>
+  <img src="./images/avenger.png" alt="">
+  <hr>
+  <div>
+    <p>知识点：</p>
+    <ol>
+      <li>
+        css Variables: 在style中，用双横线（--）定义， 使用时用 var(--variableName)
+      </li>
+      <li>
+        dataset: 获取元素中所有'data-*'的属性
+      </li>
+      <li>
+        document.documentElement: 返回文档的根结点
+      </li>
+      <li>
+        setProperty: 改变 style 中特性的方法
+      </li>
+      <li>
+        :root 选择器匹配文档根元素
+      </li>
+    </ol>
+  </div>
+  <style>
+    :root {
+      --color: #ffCCDD;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--color);
+      filter: blur(var(--blur))
+    }
+
+    .title {
+      color: var(--color)
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input')
+
+    function handleUpdate() {
+      // Bingo 这里用this就可以 
+      console.log(this.value)
+      // this.dataset 所有 'data-*' 属性组成的对象 suffix:后缀，下标
+      const suffix = this.dataset.sizing || ''
+
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+      //使用时需要保留所有的变量
+      //document.documentElement.setAttribute('style', `--${this.name}: ${this.value + suffix}`)
+    }
+    inputs.forEach(item => item.addEventListener('change', handleUpdate))
+    // 保证在range滑动过程中取到值
+    inputs.forEach(item => item.addEventListener('mousemove', handleUpdate))
+  </script>
+</body>
+</html>
