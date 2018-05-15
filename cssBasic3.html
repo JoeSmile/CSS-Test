@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>counter</title>
+    <style>
+        p {
+            margin: 0;
+        }
+        body {
+            counter-reset: section 0 sub-section 0 points 0;
+            font-family: sans-serif;
+        }
+        ul {
+            list-style-type: none;
+        }
+
+        .points p {
+            color: blue;
+            text-indent: 2rem;
+        }
+        .points li::before {
+            content: '知识点 'counter(points, korean-hanja-informal) ': ';
+            counter-increment: points;
+        }
+        .sub-section2 {
+            counter-reset: sub-section 8;
+        }
+        .sub-section li::before {
+            counter-increment: sub-section;
+            content: '默认递增标题 'counter(sub-section, lower-alpha) ': ';
+        }
+        .sub-section2 li::before {
+            counter-increment: sub-section -1;
+            content: '递减标题 'counter(sub-section, lower-roman) ': ';
+        }
+        .custom {
+            counter-reset: custom;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class='points'>
+            <li>
+                <p>counter-reset: 定义计数器，包括初始值，作用域等,display: none时失效</p>
+                <p>counter-reset: counterName1 0 counterName2 0 ...</p>
+            </li>
+            <li>
+                <p>counter-increment: 设置计数器的增数,</p>
+                <p>counter-increment(counterName) | counter-increment(counterName, step)[step可以为负数]</p>
+            </li>
+            <li>
+                <p>counter(): 调用计数器。在CSS2.1中counter()只能被使用在content属性上</p>
+                <p>counter(counterName) | counter(counterName, list-style-type)</p>
+                <p>list-style-type: 种类很多可以试试，例如：罗马字，希腊符号，希腊字母，大小写数字，天干地支等</p>
+            </li>
+            <li>
+                <ul class='sub-section'>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <li>
+                <ul class='sub-section2'>
+                    <li>下面有个元素用了 display: none</li>
+                    <li style="display:none"></li>
+                    <li>上面有个元素用了 display: none</li>
+                    <li></li>
+                    <li>下面有个元素用了 visibility: hidden</li>
+                    <li style="visibility: hidden"></li>
+                    <li>上面有个元素用了 visibility: hidden</li>
+                    <li style='color:blue'>display: none的元素不参与计数，使用visibility:hidden参与计数</li>
+                </ul>
+            </li>
+            <li>
+               <p>@counter-style: 可以自定义counter的类型，有兴趣的同学可以试试</p>
+               <pre>
+        @counter-style circled-alpha {
+            system: fixed;
+            symbols: Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ;
+            suffix: "、";
+        }
+               </pre>
+            </li>
+            <li>
+                <p>设置计数器名称和初始值: counter-reset</p>
+                <p>设置增数，可以是负数: counter-increment</p>
+                <p>调用计数器并设置样式: counter()</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
