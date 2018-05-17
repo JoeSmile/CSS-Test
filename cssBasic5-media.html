@@ -1,0 +1,85 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>media</title>
+  </head>
+  <body>
+    <div class='main'>
+      <p>Syntax:</p>
+      <code>@media not|only mediatype and (media feature and|or|not mediafeature) {
+          CSS-Code;
+      }</code>
+      <hr>
+      <ul>
+        <p>media type</p>
+        <li>
+          all: 默认值，所有设备
+        </li>
+        <li>
+          print: Used for printer(打印机)
+        </li>
+        <li>
+          screen: Used for computer screens, tables,smart-phones etc(电脑，平板，智能手机等)
+        </li>
+        <li>
+          speech: User for screenreaders
+        </li>
+        <li>
+          PS：一般我们需要用的，同时也是最常用的就是screen。
+        </li>
+      </ul>
+      <hr>
+      <ul>
+        <p>media features</p>
+        <p>feateure的值很多，比如color（The number of bits per color component for the output device）, grid（Whether the device is a grid or bitmap）等有关设备信息的值。这里我们介绍常用的几个。</p>
+        <li>
+          height: the viewport height(视窗高度)。可加 min/max 前缀。
+        </li>
+        <li>
+          width: the viewport width(视窗宽度)。可加 min/max 前缀。(当width为800px时生效， min-width为屏幕宽度>= 800, max-witdh为屏幕宽度 <= 800)
+          <code>
+            @media screen and (width: 800px) { ... }
+          </code>
+        </li>
+        <li>
+          orientation：	The orientation（方向） of the viewport (landscape(横屏) or portrait（竖屏） mode)
+          <code>@media all and (orientation: portrait) { ... }</code>
+        </li>
+        <li>resolution： The resolution of the output device（屏幕分辨率), using dpi or dpcm</li>
+        <li>
+          ratio: device-aspect-ratio（设备宽高比)
+          <code>
+            @media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }
+          </code>
+        </li>
+      </ul>
+      <hr>
+      <ul>
+        <p>Key words</p>
+        <li>
+          and: 关键字用于合并多个媒体属性或合并媒体属性与媒体类型。
+        </li>
+        <li>
+          only: 
+        </li>
+        <li>
+          not: 在媒体查询为假时返回真。not关键字仅能应用于整个查询，而不能单独应用于一个独立的查询。not的用法比较绕，建议用and。
+          <code>
+              @media not all and (monochrome) { ... }
+          </code>
+        </li>
+      </ul>
+    </div>
+    
+    <style>
+     @media screen and (min-height: 800px) {
+      .main {
+        background: tomato;
+      }
+     }
+    </style>
+  </body>
+  </html>
