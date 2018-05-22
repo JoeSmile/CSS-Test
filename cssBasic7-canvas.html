@@ -8,15 +8,60 @@
   <title>Canvas</title>
 </head>
 <body>
-   
-  </div>
-  
-  <style>
-    
-  </style>
+  <div id='main'>
+    <div class='tools'>
+      <span class='rect' data-color='#B0F566' style="background: #B0F566"></span>
+      <span class='rect' data-color='#4AF2A1' style="background: #4AF2A1"></span>
+      <span class='rect' data-color='#B0F566' style="background: #B0F566"></span>
+      <span class='rect' data-color='#5CC9F5' style="background: #5CC9F5"></span>
+      <span class='rect' data-color='#6638F0' style="background: #6638F0"></span>
+      <span class='rect' data-color='#F78AE0' style="background: #F78AE0"></span>
+      <span class='rect' data-color='#5D7C9D' style="background: #5D7C9D"></span>
+      <span class='rect' data-color='#C8C8C8' style="background: #C8C8C8"></span>
+      <span class='rect' data-color='#E69400' style="background: #E69400"></span>
+      <span class='rect' data-color='#F50802' style="background: #F50802"></span>
+      <input type="range">
+    </div>
+    <canvas id='my-canvas'>
 
-  <script>
-    
-  </script>
+    </canvas>
+  </div>
+
+<script>
+  const canvas = document.getElementById('my-canvas')
+  const ctx = canvas.getContext('2d')
+
+  function changePenColor(e) {
+    ctx.strokeStyle = e.currentTarget.dataset['color']
+  }
+
+  ctx.beginPath()
+  ctx.moveTo(20, 20)
+  ctx.lineTo(200, 200)
+  ctx.lineWidth = 1.0
+  ctx.strokeStyle = '#CC0000'
+  ctx.stroke()
+
+
+  const colorplate = document.querySelectorAll('.rect')
+  colorplate.forEach(color => color.addEventListener('click', changePenColor))
+</script>
+
+<style>
+  .tools {
+    height: 60px;
+  }
+  .rect {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+  }
+  #my-canvas {
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid tomato;
+  }
+</style>
+
 </body>
 </html>
