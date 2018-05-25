@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js Basic </title>
+</head>
+<body>
+  <h2>数据类型</h2>
+  <pre>
+      数值（number）：整数和小数（比如1和3.14）
+      字符串（string）：文本（比如Hello World）。
+      布尔值（boolean）：表示真伪的两个特殊值，即true（真）和false（假）
+      undefined：表示“未定义”或不存在，即由于目前没有定义，所以此处暂时没有任何值
+      null：表示空值，即此处的值为空。
+      对象（object）：各种值组成的集合。包括object，array, function，null
+      symbol: 符号类型。ES6中新增
+
+
+      确定数据类型的三种方法
+      typeof运算符
+      instanceof运算符
+      Object.prototype.toString方法
+
+      typeof运算符可以返回一个值的数据类型。
+      数值、字符串、布尔值, 函数, undefined分别返回 'number'、'string'、'boolean'、'function'、'undefined'
+      typeof可以用来检查一个没有声明的变量，而不报错。 typeof xxxundefined // 'undefined'
+
+      instanceof: instanceof运算符返回一个布尔值，表示对象是否为某个构造函数的实例.instanceof的原理是检查右边构造函数的prototype属性，是否在左边对象的原型链上。有一种特殊情况，就是左边对象的原型链上，只有null对象。这时，instanceof判断会失真。
+      var date = new Date()
+      date instanceof Date
+      [] instanceof Array
+      [] instanceof Object
+  </pre>
+</body>
+</html>

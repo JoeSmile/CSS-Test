@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js Basic </title>
+</head>
+<body>
+  <h2>基础知识</h2>
+  <pre>
+    1.语句 与 表达式
+    2.变量
+      2.1概念
+      2.2声明，赋值
+    3.标识符（命名规则）
+    4.注释
+    5.区块
+    6.条件语句
+    6.1 if…else 结构
+    6.2 switch结构
+    6.3 三元运算符 ?:
+    7. 循环语句
+    7.1 while 循环
+    7.2 for 循环
+    7.3 do…while 循环
+    7.4 break 语句和 continue 语句
+    7.5 标签（label）
+  </pre>
+  <pre>
+    1.语句
+    JavaScript 程序的执行单位为行（line），也就是一行一行地执行。一般情况下，每一行就是一个语句(statement).以分号结尾，但不是强制的，所以推荐不用分号，干净整洁一些
+    var variable = 1
+    表达式（expression): var variable = 1 + 1, 1 + 1 就是表达式。表达式一定会返回一个值，语句通常用于赋值。
+    2.变量 variable
+    变量是对“值”的具名引用。变量就是为“值”起名，然后引用这个名字，就等同于引用这个值。
+    var num = 123. 123是值，num是变量。
+    var variable; 声明。 此时variable 的值是 undefined, // undefined是一个js的数据类型/关键字，表示为'无定义',variable = 123, 赋值。通常 var variable = 123
+    注意，JavaScript 对大小写敏感，variable 和 Variable 是两个不同的变量。
+
+    重复定义：
+    var x = 1 
+    var x
+    此时第二次声明无效, x = 1
+    var x = 1
+    var x = 2
+    此时第二次声明+赋值有效,并覆盖第一次声明+赋值 x = 2
+    PS: 后面和ES6 let对比
+
+    面试题：变量提升
+    JavaScript 引擎的工作方式是，先解析代码，获取所有被声明的变量，然后再一行一行地运行。这造成的结果，就是所有的变量的声明语句，都会被提升到代码的头部，这就叫做变量提升（hoisting）
+    console.log('1 ---- a:', a) // undefined 已声明但为赋值
+    var a = 1
+    console.log('2 ---- a:', a) // a = 1 已赋值
+
+    3.标识符（命名规则）
+    标识符（identifier）指的是用来识别各种值的合法名称。最常见的标识符就是变量名，以及后面要提到的函数名。JavaScript 语言的标识符对大小写敏感，所以a和A是两个不同的标识符。
+    标识符有一套命名规则，不符合规则的就是非法标识符。
+    规则：
+    第一个字符，可以是任意 Unicode 字母（包括英文字母和其他语言的字母），以及美元符号（$）和下划线（_）。
+    第二个字符及后面的字符，除了 Unicode 字母、美元符号和下划线，还可以用数字0-9。
+    第三个不建议定义汉语变量名，但合法var 变量 = 1
+    eg: abc123, _abc, $abc等
+    错误：
+    123abc//不能以数字开头
+    123 // 同上
+    ***** //不能有星号
+    a+b //表达式 非标识符
+    保留字：
+    JavaScript有一些保留字，不能用作标识符：arguments、break、case、catch、class、const、continue、debugger、default、delete、do、else、enum、eval、export、extends、false、finally、for、function、if、implements、import、in、instanceof、interface、let、new、null、package、private、protected、public、return、static、super、switch、this、throw、true、try、typeof、var、void、while、with、yield。
+  
+    4.注释
+    // 这是单行注释
+
+    /*
+    这是
+    多行
+    注释
+    */
+
+    由于历史上 JavaScript 可以兼容 HTML 代码的注释，所以 <<code>!-- </code> --> 也是合法单行注释
+
+    5.区块
+    JavaScript 使用大括号，将多个相关的语句组合在一起，称为“区块”（block）。后面和ES6块对比。一般和for、if、while、function等一起使用构成单独的作用域。
+
+    6.条件语句
+    6.1 if else
+    
+      if (布尔值 || 表达式) {
+        语句
+      } else {
+        语句
+      }
+  
+      或者
+      
+      if (布尔值) 语句;
+
+      或者 
+      //嵌套
+      if (express) {
+        if (express2) {
+
+        } else {
+
+        }
+      }
+
+      或者 
+      if (express1) {
+
+      } else if(express2){
+
+      } else if(express3) {
+
+      } else ...
+
+      注意： var x = 1, y = 2; if (x = y) {} 不要写成赋值语句, 赋值语句总返回'右值', x = y 返回 2， y = 0, x = y 返回 0！！！
+
+      6.2 switch
+      case比较采用的是严格相等运算符（===），而不是相等运算符（==），这意味着比较时不会发生类型转换。
+      switch (fruit) {
+        case "banana":
+          // ...
+          break;
+        case "apple":
+          // ...
+          break;
+        default:
+          // ...
+      }
+
+      6.3 三元（目）运算符 ?:
+      (条件) ? 表达式1 : 表达式2
+      如果“条件”为true，则返回“表达式1”的值，否则返回“表达式2”的值。
+
+      7. 循环语句
+      7.1 while 循环
+      while (条件) {
+        语句;
+      }
+
+      7.2 for 循环
+      for (初始化表达式; 条件; 递增表达式) {
+        语句
+      }
+      初始化表达式（initialize）：确定循环变量的初始值，只在循环开始时执行一次。
+      条件表达式（test）：每轮循环开始时，都要执行这个条件表达式，只有值为真，才继续进行循环。
+      递增表达式（increment）：每轮循环的最后一个操作，通常用来递增循环变量。
+
+
+      7.3 do…while 循环
+      do...while循环与while循环类似，唯一的区别就是先运行一次循环体，然后判断循环条件。
+      不管条件是否为真，do...while循环至少运行一次，这是这种结构最大的特点。另外，while语句后面的分号注意不要省略。
+      do {
+        语句
+      } while (条件);
+
+      7.4 break 语句和 continue 语句
+      break语句用于跳出代码块或循环。
+      continue语句用于立即终止本轮循环，返回循环结构的头部，开始下一轮循环
+      注意： 在map中 break不生效
+      
+      7.5 标签（label）
+      JavaScript 语言允许，语句的前面有标签（label），相当于定位符，用于跳转到程序的任意位置，标签的格式如下。
+      label:
+        语句
+        标签通常与break语句和continue语句配合使用，跳出特定的循环。
+      <code>
+        top: 
+            for(var i=0; i < 100; i++) {
+              if (i === 50) {
+                break top;
+              }
+            }
+      </code>
+
+    关于变量提升：
+    
+    “Hoisting 只对 `var` 声明的变量有效”，不尽然如此。变量声明的提升并非 hoisting 的全部，JavaScript 有四种让声明在作用域内获得提升的途径（按优先级）：
+
+    －语言定义的声明，如 this 和 arguments。你不能在作用域内重新定义叫做 this 的变量，是因为 this 是语言自动定义的声明，并且它的优先级最高，也就是被 Hoisting 到最顶上了，没人能覆盖它
+
+    －形式参数。虽然我们无需用 var 来修饰形式参数，但是形式参数的确也是变量，并且被自动提升到次高的优先级
+
+    －函数声明。除了 var 以外，function declaration 也可以定义新的命名，并且同样会被 hoisting 至作用域顶部，仅次于前两者
+
+    －最后，是本文提到的常规变量，也就是 var 声明的变量
+  </pre>
+
+</body>
+</html>
