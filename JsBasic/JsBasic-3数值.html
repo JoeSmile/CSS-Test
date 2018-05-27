@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js Basic </title>
+</head>
+<body>
+  <h2>数据类型--Number</h2>
+  <pre>
+      1.概述
+        整数和浮点数
+        数值精度
+        数值范围
+      2.数值的表示法
+      3.特殊数值
+        NaN
+        Infinity
+      4.与数值相关的全局方法
+        parseInt()
+        parseFloat()
+        isNaN()
+        isFinite()
+  </pre>
+  <pre>
+    1.整数和浮点数
+    JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，1与1.0是相同的，是同一个数
+    <code>
+        1 === 1.0 // true
+    </code>
+    注意： 某些运算只有整数才能完成，此时 JavaScript 会自动把64位浮点数，转成32位整数，然后再进行运算
+    <code>
+        0.1 + 0.2 === 0.3 // false
+        0.3 / 0.1 // 2.9999999999999996
+        (0.3 - 0.2) === (0.2 - 0.1) // false
+    </code>
+
+    2.关于精度
+    精度最多只能到53个二进制位，这意味着，绝对值小于等于2的53次方的整数，即-2d的53次方到2的53次方。
+
+    3.特殊数字
+    NaN ：表示“非数字”（Not a Number）主要出现在将字符串解析成数字出错的场合。
+    Infinity 无穷。
+    1 ／ 0  //Infinity
+    0 / 0 NaN
+    NaN === NaN // false
+    Infinity与NaN比较，总是返回false
+
+    4.方法
+    parseInt(): parseInt方法用于将字符串转为整数。
+    parseInt('8a') // 8
+    parseInt('12**') // 12
+    parseInt('12.34') // 12
+    parseInt('15e2') // 15
+    parseInt('15px') // 15
+
+    // 第二个参数
+    parseInt('1000', 2) // 8
+    parseInt('1000', 6) // 216
+    parseInt('1000', 8) // 512
+  </pre>
+</body>
+</html>
