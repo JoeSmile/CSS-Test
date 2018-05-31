@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>
+      arguments
+    </title>
+  </head>
+  <script>
+    function func() {
+      console.log(arguments)
+      var args = Array.prototype.slice.call(arguments);
+      console.log(args)
+    }
+
+    func(1,2,2,3,5,5,5)
+  </script>
+</html>
