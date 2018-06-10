@@ -197,11 +197,28 @@ o.b.fn();
 ```
 
 call、apply、bind: 改变this 指针的3个大佬
+> 语法：A.call(B, param1, param2,...)
 > 定义：B来代替A，调用A的方法。call 一个一个打电话后面跟N个参数
+
+Joe.add(Jie, 2,3,4)
+
+var joe = {
+    name: 'joe'
+    func: () => {
+        return  `hello` + this.name 
+    }
+}
+
+var jie = {
+    name: 'jie'
+}
+
+joe.func.apply(jie)
+
 
 apply 类似
 > 语法：A.call(B, [param1,param2,...])
-定义：B来代替A，调用A的方法。apply 一个数组
+> 定义：B来代替A，调用A的方法。apply 一个数组
 
 ```
 const scores = [32,45,67,74,13,34,75,23,87,97,100,100,12,45,31,67,12,34,34,76,32,21,78,88,77,89,78,99,97,97,96]
