@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>
+        todolist
+    </title>
+  </head>
+  <body>
+      <a href="http://www.todolist.cn/">http://www.todolist.cn/</a>
+      <div class='new-list'>
+        <input /> <span class='addOneList'>ADD +</span>
+      </div> 
+      <ul class='list'>
+      </ul>
+  </body>
+  <script>
+    function addOneList() {
+        const input = document.querySelector('.new-list input')
+        const value = input.value
+        input.value = ''
+        const li = document.createElement('li')
+        li.innerHTML = value
+        li.className = 'item'
+        li.style = 'color: red;'
+        const list = document.querySelector('.list')
+        list.appendChild(li)
+    }
+
+    const addBtn = document.querySelector('.addOneList')
+    addBtn.addEventListener('click', addOneList)
+
+    function deleteLi(e) {
+        if (e.target.className !== 'item') 
+            return
+        console.log(e.target)
+        e.target.remove()
+    }
+    window.addEventListener('click', deleteLi)
+  </script>
+</html>
