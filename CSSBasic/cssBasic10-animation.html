@@ -5,178 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Canvas</title>
+  <title>animation</title>
 </head>
-<body>
-  <div id='main'>
-    <div class='tools'>
-      <span class='rect' data-color='#B0F566' style="background: #B0F566"></span>
-      <span class='rect' data-color='#4AF2A1' style="background: #4AF2A1"></span>
-      <span class='rect' data-color='#B0F566' style="background: #B0F566"></span>
-      <span class='rect' data-color='#5CC9F5' style="background: #5CC9F5"></span>
-      <span class='rect' data-color='#6638F0' style="background: #6638F0"></span>
-      <span class='rect' data-color='#F78AE0' style="background: #F78AE0"></span>
-      <span class='rect' data-color='#5D7C9D' style="background: #5D7C9D"></span>
-      <span class='rect' data-color='#C8C8C8' style="background: #C8C8C8"></span>
-      <span class='rect' data-color='#E69400' style="background: #E69400"></span>
-      <span class='rect' data-color='#F50802' style="background: #F50802"></span>
-      <span>
-        <span>pen degree</span>
-        <input type="range" min='1' max='100' step="1" value='1'>
-      </span>
-      <span class='rect' data-type='line'>line</span>
-      <span class='rect' data-type='rect'>rect</span>
-      <span class='rect' data-type='text'>text</span>
-      <span class='rect' data-type='acr'>acr</span>
-    </div>
-    <canvas id='my-canvas'></canvas>
-    <div>
-      <img src="./images/coordinate.png" alt="coordinate">
-    </div>
-  </div>
-<!--  -->
-<script>
-  const canvas = document.querySelector('#my-canvas')
-  // 创建2d绘图context，这里可以理解成画笔，之后可以对画笔进行设置，比如颜色，粗细等
-  const ctx = canvas.getContext('2d')
-  canvas.height = 1000 //window.innerHeight
-  canvas.width = 1000 //window.innerWidth
-  // width和height属性作为标签属性写在行内代表的是画布的分辨率(resolution)，而写在样式里代表的是画布的大小（size）
-  // canvas 的 width 和 height 只能写成内联样式（不加单位）或者 js赋值 （不加单位）
-  // 原来Canvas标签包涵两个东西，一个是元素本身，另一个是元素绘图表面。
-  // 他们都有着自己各自的尺寸大小。所在canvas的大小实际上是指两方面的，元素本身的大小和元素绘图表面大小。Canvas元素本身和元素绘图表面默认的大小都是300x150像素。
-  // 前面提到的两个设置Canvas大小的方法的区别在于，通过CSS设置Canvas大小时，只对Canvas元素本身的大小进行设置，而没有对元素绘图表面大小进行设置，
-  // 所以元素绘图表面是默认大小300x150像素。当Canvas元素本身大小与元素绘图表面不一样时，浏览器会对元素绘图表面进行缩放，使其符合元素大小。
-  // 而在canvas标签内直接定义width和height就不一样了，它是同时定义元素本身大小和元素绘图表面大小。通过JS来定义与在canvas标签内定义效果是一样的。
-  // 设置画笔的宽度，即粗细
-  ctx.lineWidth = 1.0
-  // 画笔颜色
-  ctx.strokeStyle = '#CC0000'
-  // 填充色， 画矩形内部填充的颜色
-  ctx.fillStyle = '#ecc000'
-  // 理解坐标 canvas的坐标系以左上角为原点（0，0）Y轴向下，X轴向右
-  var startDotX = 0
-  var startDotY = 0
-  var endDotX = ''
-  var endDotY = ''
-  var ableDraw = false
-  var drawType = 'line'
-
-  // 这个函数写在一起了，可以分开写
-  function changePenColorAndType(e) {
-    if (e.currentTarget.dataset['color']) {
-      ctx.strokeStyle = e.currentTarget.dataset['color']
-      ctx.fillStyle = e.currentTarget.dataset['color']
-    } else {
-      drawType = e.currentTarget.dataset['type']
-    }
-  }
-
-  function beginDraw(e) {
-    startDotX = e.offsetX
-    startDotY = e.offsetY
-    ableDraw = true
-  }
-
-  // 画线需要知道起始点和终点的坐标
-  function drawLine() {
-    ctx.beginPath()
-    //定义线条开始坐标
-    ctx.moveTo(startDotX, startDotY)
-    //定义线条结束坐标
-    ctx.lineTo(endDotX, endDotY)
-    // 真正开始画图
-    ctx.stroke()
-  }
-
-  //strokeRect(x,y,width,height)
-  function drawRect() {
-    ctx.strokeRect(startDotX, startDotY, Math.abs(startDotX - endDotX), Math.abs(startDotY - endDotY))
-  }
-
-  // font - 定义字体
-  // fillText(text,x,y) - 在 canvas 上绘制实心的文本
-  // strokeText(text,x,y) - 在 canvas 上绘制空心的文本
-  function drawText() {
-    // 设置字体
-    ctx.font = "Bold 20px Arial"
-    // 设置对齐方式
-    ctx.textAlign = "left"
-    // 设置字体内容，以及在画布上的位置
-    ctx.fillText("Hello Canvas", startDotX, startDotY)
-  }
-
-  // arc(x,y,r,start,stop)
-  function drawAcr() {
-    // ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-    // arc方法的x和y参数是圆心坐标，radius是半径，startAngle和endAngle则是扇形的起始角度和终止角度（以弧度表示），
-    // anticlockwise表示做图时应该逆时针画（true）还是顺时针画（false）
-    ctx.beginPath(); 
-    ctx.arc(( startDotX + endDotX ) / 2, ( startDotY + endDotY ) / 2, 50, 0, Math.PI*2, true)
-    ctx.stroke();
-  }
-
-  function draw(e) {
-    endDotX = e.offsetX
-    endDotY = e.offsetY
-    if (ableDraw) {
-      switch(drawType) {
-        case 'line':
-          drawLine()
-          startDotX = endDotX
-          startDotY = endDotY
-          break
-        default:
-         break
-      }
-    }
-  }
-
-  function endDraw(e) {
-    if (!ableDraw) return;
-    switch(drawType) {
-      case 'rect':
-        drawRect()
-        break
-      case 'text':
-        drawText()
-        break; 
-      case 'acr':
-        drawAcr()
-        break 
-      default:
-        break
-    }
-    ableDraw = false
-  }
-
-  const colorplate = document.querySelectorAll('.rect')
-  colorplate.forEach(color => color.addEventListener('click', changePenColorAndType))
-
-  const myCanvas = document.querySelector('#my-canvas')
-  myCanvas.addEventListener('mousedown', beginDraw)
-  myCanvas.addEventListener('mousemove', draw)
-  myCanvas.addEventListener('mouseup', endDraw)
-  myCanvas.addEventListener('mouseout', endDraw)
-
-  const penDegree = document.querySelector('input')
-  penDegree.addEventListener('change', (e) => ctx.lineWidth = e.currentTarget.value)
-</script>
-
 <style>
-  .tools {
-    height: 60px;
-  }
-  .rect {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-  }
-  #my-canvas {
+  .square {
+    width: 50px;
+    height: 50px;
     border: 1px solid tomato;
+    background: tomato;
+    animation: run 5s ease 0.5s infinite alternate;
+  }
+
+  @keyframes run {
+    0% {
+      transform: translateX(0px);
+    }
+    25% {
+      transform: translateX(100px);
+    }
+    50% {
+      transform: translateX(200px) rotate(90deg);
+    }
+    75% {
+      transform: translateX(300px);
+    }
+    100% {
+      transform: translateX(400px);
+    }
   }
 </style>
-
+<body>
+  <div class='square'></div>
 </body>
 </html>
