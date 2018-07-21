@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>ES6(1)</title>
+</head>
+<body>
+    <div id='main'>
+        <div class="demo_array_from">1</div>
+        <div class="demo_array_from">12</div>
+        <div class="demo_array_from">13</div>
+        <div class="demo_array_from">14</div>
+    </div>
+    <script>
+    // 1. let VS var
+    // var eg1 变量提升
+    function printByVar(condition) {
+        // var name
+        if (condition) {
+            var name = 'Joe'
+        }
+        return name
+    }
+    
+    console.log('printByVar',printByVar(false))
+    // console.log(print(true))
+    // var eg2 变量提升
+    for (var i = 0; i < 10; i++) {}
+    console.log('i', i)
+    // let const
+    // 为了加强对变量生命周期的控制，ECMAScript 6 引入了块级作用域。
+    // 块级作用域存在于：
+    // ·函数内部
+    // ·块中(字符 { 和 } 之间的区域)
+
+    function printByLet(condition) {
+        // var name
+        if (condition) {
+            let name1 = 'Joe'
+        }
+        return name1
+    }
+    // let 优点1: 不会被提升，此处会报错
+    // console.log('printByLet', printByLet(false))
+
+    // let 优点2: 重复声明会报错
+    var company = 1
+    // let company = 2
+
+    // 优点3: 不会绑定到全局作用域
+    var address = 1
+    console.log('window.address', window.address) // 1
+    // 提前使用会报错
+    // console.log('提前使用 tel', tel)
+    let tel = 1
+    console.log('window.tel', window.tel) // 1
+
+    // 2. const const声明一个只读的常量。一旦声明，常量的值就不能改变。
+    const PI = 3.14
+    //PI = 3 // 报错
+
+    // info 的指针不能改变，但内容可以改变
+    const info = {}
+    info.name = 'Joe'
+
+
+    // 3.神奇的解构 ...
+    // object 解构
+    let {grade, ...rest} = {
+        grade: 'L3',
+        name: 'Joe',
+        sex: 'man',
+        score: 100
+    }
+    console.log('grade', grade)
+    console.log('rest', rest)
+    // 注意覆盖
+    let information = {
+        name: 'Jack',
+        sex: 'man',
+        score: 90
+    }
+    const newInfo = Object.assign({}, information, rest)
+    console.log('newInfo', newInfo)
+    const newInfo2 = {...information, ...rest}
+    console.log('newInfo2', newInfo2)
+    //obj 如果变量名与属性名不一致，必须写成下面这样。 真正被赋值的是后者，而不是前者。
+    let { foo: baz } = { foo: 'aaa', bar: 'bbb' }
+    console.log('baz', baz)
+    // console.log('foo', foo) //报错
+
+    // array 结构
+    let [arr1,arr2] = [[1,2,3,4], [11, 22, 33, 44]]
+    console.log('arr1', arr1)
+    console.log('arr2', arr2)
+
+    let [ , , third] = ["foo", "bar", "baz"];
+    console.log('third', third)
+
+    // 4.模版 ``
+    let who = 'Mary'
+    const temp = `${who}, You are love!!`
+    console.log('template:', temp)
+    // 保留格式 \n 换行
+    console.log(`
+        this is the \n example 
+        of template
+        \'\'
+    `)
+    // 5.数值扩展
+    Number.isNaN()
+    // 6.数组扩展
+    //Array.from()
+    document.querySelectorAll('div') //对类数组进行转换
+    //Array.includes() lodash有形同的函数
+    const ret = [1,2,3].includes(1)
+    // 7.对象扩展 简洁表达法
+    const demo_info = {
+        name: 'joe',
+        sex: 'man'
+    }
+    const demo_info2 = {
+        demo_info: demo_info //
+    }
+
+    const demo_info3 = {
+        demo_info
+    }
+
+    // 8.箭头函数 () => {}
+    var f = v => v
+    console.log(`v => v`,f(100))
+    //关于this 指针
+    // 箭头函数有几个使用注意点。
+    // （1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+    // （2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+    // （3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+    // （4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+
+    // 9.promise
+    const demo_promise = item => {
+        return new Promise((resolve, reject) => {
+            if (item >= 80) {
+                resolve({grade: 'good'})
+            } else {
+                reject({grade: 'bad'})
+            }
+        })
+    }
+
+    demo_promise(80).then(result => {
+        console.log('result', result)
+    }).catch(err => {
+        console.log('err', err)
+    }).finally(() => {
+        console.log('promise is over')
+    })
+
+    // promise.all([p1, p2, p3]) p1, p2, p3 都有结果后返回，若有1个错，就返回reject
+    // promise.race([p1, p2, p3]) p1, p2, p3 返回最快返回的promise结果
+    // 对比 async / await
+    // async func () {
+    //     await $ajax
+    // }
+
+    //http://es6.ruanyifeng.com/
+    </script>
+</body>
+</html>

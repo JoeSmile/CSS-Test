@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>广发证券欢迎您</title>
+</head>
+<body>
+        <div id='main'>
+
+                <div>chaper1</div>
+               
+                <div id='chaper2'>chaper2
+               
+                 <ul><li>li</li></ul>
+               
+                 <p id='chaper'>chaper</p>
+               
+                </div>
+               
+                <button id='btn' type='button'>Button</button>
+               
+                <li id='text'>I will move into list</li>
+               
+                <div id='del'>delete me</div>
+               
+                <button id='replace'>I will be replaced</button>
+               
+                <div id='remove'>child remove</div>
+               
+               </div>
+   <script>
+        var node = document.getElementById('main')
+
+var btn = document.getElementById('btn')
+  //1.Node.nodeName 返回节点名称，只读
+
+console.log('1.nodeName:', node.nodeName) 
+
+
+
+  // 2.Node.nodeType 返回节点类型的常数值，只读
+
+console.log('2.nodeType:', node.nodeType) 
+
+
+
+
+  // 3.Node.nodeValue value是一个包含当前节点的值的字符串（如果有的话，只读）
+
+console.log('3.btn---nodeValue:', btn.childNodes[0].nodeValue) 
+
+
+
+  // 4.Node.textContent 返回当前节点和它的所有后代节点的文本内容，可读写
+
+console.log('4.textContent:', node.textContent)
+
+
+
+  // 5.Node.baseURI 返回当前网页的绝对路径
+
+  console.log('5.baseURI:', node.baseURI)
+
+
+
+  // 6.Node.ownerDocument  //返回当前节点所在的顶层文档对象，即document
+
+  console.log('6.ownerDocument:', node.ownerDocument)
+
+
+
+  // 7.Node.nextSibling  //返回紧跟在当前节点后面的第一个兄弟节点
+
+  console.log('7.nextSibling:', btn.nextSibling)
+
+
+
+  // 8.Node.previousSibling  //返回当前节点前面的、距离最近的一个兄弟节点
+
+console.log('8.previousSibling:', node.previousSibling)
+
+
+
+  // 9.Node.parentNode   //返回当前节点的父节点
+
+  console.log('9.parentNode:', node.parentNode)
+
+
+
+  // 10.Node.parentElement  //返回当前节点的父Element节点
+
+console.log('10.parentElement:', node.parentElement)
+
+
+
+  // 11.Node.childNodes   //返回当前节点的所有子节点
+
+console.log('11.childNodes:', node.childNodes)
+
+
+
+  // 12.Node.firstChild  //返回当前节点的第一个子节点
+
+console.log('12.firstChild:', node.firstChild)
+
+
+
+  // 13.Node.lastChild   //返回当前节点的最后一个子节点
+
+ console.log('13.lastChild:', node.lastChild)
+
+
+
+  // 14.Node.children  //返回指定节点的所有Element子节点
+
+console.log('14.children:', node.children)
+
+
+
+  // 15.Node.firstElementChild  //返回当前节点的第一个Element子节点
+  console.log('15.firstElementChild:', node.firstElementChild)
+
+
+
+  // 16.Node.lastElementChild   //返回当前节点的最后一个Element子节点
+  console.log('16.lastElementChild:', node.lastElementChild)
+
+
+
+  // 17.Node.childElementCount  //返回当前节点所有Element子节点的数目。
+
+console.log('17.childElementCount:', node.childElementCount)
+   </script>
+</body>
+</html>
